@@ -42,7 +42,7 @@ add.addEventListener("click", () => {
 })
 
 add.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
+    if (event.key === "enter") {
         addTask(inputText);
     }
 });
