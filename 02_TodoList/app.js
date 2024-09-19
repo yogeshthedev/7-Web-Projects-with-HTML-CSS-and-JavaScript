@@ -37,6 +37,12 @@ function showTask() {
 }
 
 
+function showMsg(){
+    let p = document.createElement('p')
+    p.innerHTML = "Succesfully added"
+    list.appendChild(p)
+}
+
 add.addEventListener("click", () => {
     addTask(inputText);
 })
