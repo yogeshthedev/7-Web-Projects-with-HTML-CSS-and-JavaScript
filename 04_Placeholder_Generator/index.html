@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlaceHolder Geneartor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section>
+        <div class="center">
+            <h1>PlaceHolder Image Geneartor</h1>
+
+            <div>
+                <label for="selectImage">Image Size:</label>
+                <select name="ImageSize" id="selectImage">
+                    <option value="100x50">Small (100x50)</option>
+                    <option value="150x150">Small (150x150)</option>
+                    <option value="200x200">Medium (200x200)</option>
+                    <option value="350x150">Medium (350x150)</option>
+                    <option value="400x400">Large (400x400)</option>
+                    <option value="800x600">Large (800x600)</option>
+                    <option value="1280x720">HD (1280x720)</option>
+                    <option value="1920x1080">Full HD (1920x1080)</option>
+                    <option value="2560x1440">Quad HD (2560x1440)</option>
+                    <option value="3840x2160">4K UHD (3840x2160)</option>
+                    <option value="5120x2880">5K (5120x2880)</option>
+                    <option value="7680x4320">8K UHD (7680x4320)</option>
+                </select>
+                
+            </div>
+
+            <div class="parent">
+                <label for="nameOnImage">Text on Image</label>
+                <input type="text" name="" value="PlaceHolder" id="nameOnImage">
+            </div>
+
+            <div class="parent">
+                <label for="backgroundColor">Color on backgroundColor</label>
+                <input type="color" name="" id="backgroundColor" value="black" class="style1">
+            </div>
+            
+            <div class="parent">
+                <label for="textColor">Color on TextColor</label>
+                <input type="color" name="" id="textColor" class="style1" value="#ffffff">
+            </div>
+
+            <div class="container">
+                <img src="" alt="">
+                <br>
+                <label for="urlPath">Place Holder URL</label>
+                <textarea name="" id="urlPath" cols="20" rows="2">Link will be available here!</textarea>
+            </div>
+        </div>
+
+
+
+    </section>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
