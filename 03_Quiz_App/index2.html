@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz app</title>
+
+    <style>
+       /* CSS Reset */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.quiz-section {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+#quiz {
+    text-align: center;
+}
+
+.question {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.score {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #007bff;
+    text-align: left;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+li {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+label {
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.result {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.result h1 {
+    margin-bottom: 20px;
+}
+
+.result button {
+    padding: 10px 30px;
+}
+
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="quiz-section">
+        <div id="quiz">
+            <h2 class="question" id="question">quiz question</h2>
+            <h1 class="score">Score: </h1>
+            <hr>
+            <ul>
+                <li>
+                    <input type="radio" name="answer" class="answer" id="a">
+                    <label for="a" id="option_1">quizOption</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" class="answer" id="b">
+                    <label for="b" id="option_2">quizOption</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" class="answer" id="c">
+                    <label for="c" id="option_3">quizOption</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" class="answer" id="d">
+                    <label for="d" id="option_4">quizOption</label>
+                </li>
+
+            </ul>
+            <hr>
+            <div class="btn">
+                <button type="submit" id="submit">Submit</button>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+</body>
+<script>
+
+    const quizData = [
+        {
+            question: "Which of the following is a client site language?",
+            options: [
+                "Java",
+                "C",
+                "Python",
+                "JavaScript"
+            ],
+            correct: "3"
+        },
+        {
+            question: "What does HTML stand for?",
+            options: [
+                "Hypertext Markup Language",
+                "Cascading Style Sheet",
+                "Jason Object Notation",
+                "Helicopters Terminals Motorboats Lamborginis"
+            ],
+            correct: "0"
+        },
+        {
+            question: "What year was JavaScript launched?",
+            options: [
+                "1996",
+                "1995",
+                "1994",
+                "none of the above"
+            ],
+            correct: "1"
+        },
+        {
+            question: "What does CSS stands for?",
+            options: [
+                "Hypertext Markup Language",
+                "Cascading Style Sheet",
+                "Jason Object Notation",
+                "Helicopters Terminals Motorboats Lamborginis"
+            ],
+            correct: "1"
+        }
+    ];
+
+    const quiz = document.querySelector('#quiz');
+    const scoreElm = document.querySelector('.score');
+    const answerElm = document.querySelectorAll(".answer");
+    const [questionElm, option_1, option_2, option_3, option_4] = document.querySelectorAll('#question,.option_1,.option_2,.option_3,.option_4')
+    const submitBtn = document.getElementById('submit');
+
+    let currectQuiz = 0;
+    let score = 0;
+
+    const loadQuiz = () => {
+        const { question, options } = quizData[currectQuiz];
+        questionElm.innerText = `${currectQuiz+1}. ${question}`;
+        scoreElm.innerText = `Score : ${score}/${quizData.length}`
+
+        options.forEach((curOption, index) => window[`option_${index + 1}`].innerText = curOption);
+    }
+
+    loadQuiz();
+
+    const getSelectedOption = () => {
+        let answerElment = Array.from(answerElm);
+        return answerElment.findIndex((curElem) => curElem.checked);
+    }
+
+    const deselectedOptions = () => {
+        return answerElm.forEach((curElem) => curElem.checked = false)
+    }
+
+    submitBtn.addEventListener("click", () => {
+        const selectedOptionIndex = getSelectedOption();
+        console.log(selectedOptionIndex);
+
+        if (selectedOptionIndex == quizData[currectQuiz].correct) {
+            score = score + 1;
+        }
+
+        currectQuiz++;
+
+        if (currectQuiz < quizData.length) {
+            deselectedOptions();
+            loadQuiz();
+        } else {
+            quiz.innerHTML = `<div class="result">
+                <h1> Your Score : ${score}/${quizData.length} Correct Answers</h1>
+                <button onclick="location.reload()"> Play Again </button>
+                    </div>
+                `
+        }
+    })
+
+
+</script>
+
+</html>

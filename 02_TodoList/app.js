@@ -37,18 +37,18 @@ function showTask() {
 }
 
 
-function showMsg(){
-    let p = document.createElement('p')
-    p.innerHTML = "Succesfully added"
-    list.appendChild(p)
-}
+// function showMsg(){
+//     let p = document.createElement('p')
+//     p.innerHTML = "Succesfully added"
+//     list.appendChild(p)
+// }
 
 add.addEventListener("click", () => {
     addTask(inputText);
 })
 
-add.addEventListener("keypress", function (event) {
-    if (event.key === "enter") {
+inputText.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
         addTask(inputText);
     }
 });
