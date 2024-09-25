@@ -71,7 +71,7 @@ let firstCard = "";
 let secondCard = "";
 
 const card_matches = () => {
-    let card_selected = document.querySelectorAll('.card-section');
+    let card_selected = document.querySelectorAll('.active');
     card_selected.forEach((curEle) => {
         curEle.classList.add('card_match')
     })
