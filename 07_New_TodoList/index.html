@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .task.completed p {
+  text-decoration: line-through;
+  color: salmon;
+}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="stats-container">
+        <div class="details">
+          <h1>Todo List</h1>
+          <p>Keep it up</p>
+          <div id="progressBar">
+            <div id="progress"></div>
+          </div>
+        </div>
+        <div class="stats-numbers">
+          <p id="numbers">0 / 0</p>
+        </div>
+      </div>
+      <div class="todolist">
+        <form action="">
+          <input type="text" id="taskinput" placeholder="Write Your Task" />
+          <button id="newtask" type="submit">Add Task</button>
+        </form>
+        <ul class="tasklist" id="tasklist"></ul>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+  </body>
+</html>
